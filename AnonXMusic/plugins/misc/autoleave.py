@@ -3,15 +3,15 @@ from datetime import datetime
 from pyrogram.enums import ChatType
 from pytgcalls.exceptions import GroupCallNotFound
 import config
-from RessoMusic import app
-from RessoMusic.misc import db
-from RessoMusic.core.call import AMBOTOP, autoend, counter
-from RessoMusic.utils.database import get_client, set_loop, is_active_chat, is_autoend, is_autoleave
+from AnonXMusic import app
+from AnonXMusic.misc import db
+from AnonXMusic.core.call import Anony, autoend, counter
+from AnonXMusic.utils.database import get_client, set_loop, is_active_chat, is_autoend, is_autoleave
 import logging
 
 async def auto_leave():
     while not await asyncio.sleep(86400):
-        from RessoMusic.core.userbot import assistants
+        from AnonXMusic.core.userbot import assistants
         ender = await is_autoleave()
         if not ender:
             continue
@@ -26,7 +26,7 @@ async def auto_leave():
                         ChatType.CHANNEL,
                     ]:
                         if (
-                            i.chat.id != config.LOG_GROUP_ID
+                            i.chat.id != config.LOGGER_ID
                             and i.chat.id != -1002016928980 and i.chat.id != -1002200386150 and i.chat.id != -1001397779415
                         ):
                             if left == 20:
@@ -56,7 +56,7 @@ async def auto_end():
             nocall = False
             for chat_id in chatss:
                 try:
-                    users = len(await AMBOTOP.call_listeners(chat_id))
+                    users = len(await Anony.call_listeners(chat_id))
                 except GroupCallNotFound:
                     users = 1
                     nocall = True
@@ -71,7 +71,7 @@ async def auto_end():
                     except Exception:
                         pass
                     try:
-                        await AMBOTOP.stop_stream(chat_id)
+                        await Anony.stop_stream(chat_id)
                     except Exception:
                         pass
                     try:
@@ -85,3 +85,4 @@ async def auto_end():
             logging.info(e)
 
 asyncio.create_task(auto_end())
+
