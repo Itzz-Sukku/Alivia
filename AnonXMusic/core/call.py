@@ -11,7 +11,9 @@ from pytgcalls.exceptions import (
 )
 from ntgcalls import TelegramServerError
 from pytgcalls.types import Update
-from pytgcalls import filters as fl
+@Anony.on_stream_end(fl.stream_end)
+async def stream_end_handler(_, update):
+    await Anony.leave_group_call(update.chat_id)
 from pytgcalls.types import AudioQuality, VideoQuality
 from pytgcalls.types import MediaStream,ChatUpdate
 
