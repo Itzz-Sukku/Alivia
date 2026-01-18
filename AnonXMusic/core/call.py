@@ -28,8 +28,8 @@ from AnonXMusic.utils.database import (add_active_chat, add_active_video_chat,
                                        is_autoend, music_on,
                                        remove_active_chat,
                                        remove_active_video_chat, set_loop)
-from RessoMusic.utils.exceptions import AssistantErr
-from RessoMusic.utils.formatters import (check_duration, seconds_to_min,
+from AnonXMusic.utils.exceptions import AssistantErr
+from AnonXMusic.utils.formatters import (check_duration, seconds_to_min,
                                          speed_converter)
 from AnonXMusic.utils.inline.play import stream_markup
 from AnonXMusic.utils.logger import send_large_error
