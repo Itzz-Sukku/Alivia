@@ -3,19 +3,13 @@ import os
 from datetime import datetime, timedelta
 from typing import Union
 
+from ntgcalls import TelegramServerError
 from pyrogram import Client
+from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardMarkup
 from pytgcalls import PyTgCalls
-from pytgcalls.exceptions import (
-    NoActiveGroupCall,
-)
-from ntgcalls import TelegramServerError
-from pytgcalls.types import Update
-@Anony.on_stream_end(fl.stream_end)
-async def stream_end_handler(_, update):
-    await Anony.leave_group_call(update.chat_id)
-from pytgcalls.types import AudioQuality, VideoQuality
-from pytgcalls.types import MediaStream,ChatUpdate
+from pytgcalls.exceptions import NoActiveGroupCall
+from pytgcalls.types import (AudioQuality, ChatUpdate, MediaStream,
 
 import config
 from config import autoclean
